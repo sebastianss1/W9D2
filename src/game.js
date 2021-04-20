@@ -8,22 +8,21 @@ const CONSTANTS = {
 }
 
 function Game() {
-    debugger
+    ////debugger
     this.asteroids = [];
-
     this.addAsteroids();
 }
 
 Game.prototype.addAsteroids = function () {
-    debugger
+    ////debugger
     for (let i = 0; i < CONSTANTS.NUM_ASTEROIDS; i++) {
-        let ast = new Asteroid(this.randomPosition());
+        let ast = new Asteroid(this.randomPosition(), this);
         this.asteroids.push(ast)
     }
 }
 
 Game.prototype.randomPosition = function () {
-    debugger
+    ////debugger
     return [
         Math.floor(CONSTANTS.DIM_X * Math.random()),
         Math.floor(CONSTANTS.DIM_Y * Math.random())
@@ -31,11 +30,29 @@ Game.prototype.randomPosition = function () {
 };
 
 Game.prototype.draw = function draw(ctx) {
-    debugger
-    ctx.clearRect();
+    ////debugger
+    ctx.clearRect(0, 0, CONSTANTS.DIM_X, CONSTANTS.DIM_Y);
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, 500, 500);
     for (let i = 0; i < this.asteroids.length; i++) {
         this.asteroids[i].draw(ctx);
     }
+}
+
+Game.prototype.moveObjects = function() {
+    for (let i = 0; i < this.asteroids.length; i++) {
+        this.asteroids[i].move();
+    }
+}
+
+Game.prototype.wrap = function(pos) {
+    if (pos[0] > CONSTANTS.DIM_X) {
+        pos[0] = 0;
+    } else if (pos[1] > CONSTANTS.DIM_Y) {
+        pos[1] = 0;
+    }
+
+    return [pos[0], pos[1]]
 }
 
 module.exports = Game;

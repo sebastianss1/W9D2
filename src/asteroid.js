@@ -6,14 +6,16 @@ const DEFAULT = {
   RADIUS: 10
 }
 
-function Asteroid(options) {
+function Asteroid(options, game) {
   this.pos = options;
   this.vel = Util.randomVec(5);
   this.radius = DEFAULT.RADIUS;
   this.color = DEFAULT.COLOR;
-  MovingObject.call(this, options);
+  this.game = game;
+  // //debugger
+  MovingObject.call(this, this);
 }
-
+////debugger
 Util.inherits(Asteroid, MovingObject);
 
 module.exports = Asteroid;
