@@ -8,9 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
     canvasEle.width = 500;
     canvasEle.height = 500;
     const ctx = canvasEle.getContext("2d");
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, 500, 500);
 
-    // ctx.fillStyle = "pink";
-    // ctx.fillRect(0, 0, 500, 500);
+    
 
     const mo = new MovingObject({
         pos: [30, 30],
@@ -19,5 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         color: "#00FF00"
     })
     mo.draw(ctx);
+    mo.move()
 
 })
