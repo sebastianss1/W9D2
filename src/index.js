@@ -1,6 +1,7 @@
 require("./game_view")
 const MovingObject = require("./moving_object.js");
 const Asteroid = require("./asteroid.js")
+const Game = require("./game")
 
 window.MovingObject = MovingObject;
 window.Asteroid = Asteroid;
@@ -22,9 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
     mo.draw(ctx);
     mo.move()
 
-    const ast = new Asteroid({
-        pos: [50, 50]
-    });
-    ast.draw(ctx);
+    const game = new Game({
+
+    })
+
 
 })

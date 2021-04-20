@@ -7,11 +7,11 @@ const DEFAULT = {
 }
 
 function Asteroid(options) {
-  debugger
-  MovingObject.call(this, options);
+  this.pos = options;
   this.vel = Util.randomVec(5);
   this.radius = DEFAULT.RADIUS;
   this.color = DEFAULT.COLOR;
+  MovingObject.call(this, options);
 }
 
 Util.inherits(Asteroid, MovingObject);
